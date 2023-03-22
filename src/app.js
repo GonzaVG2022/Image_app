@@ -6,6 +6,7 @@ const router = require('./routes');
 // Esta es nuestra aplicación
 const app = express();
 const errorHandler = require('./utils/errorHandler')
+const path = require('path');
 
 // Middlewares 
 app.use(express.json());
@@ -13,6 +14,7 @@ app.use(helmet({
     crossOriginResourcePolicy: false,
 }));
 app.use(cors());
+app.use(express.static(path.join(__dirname, 'public'))); 
 // routes
 app.get('/', (req, res) =>{
     return res.send('Welcome to node')
